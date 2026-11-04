@@ -1,5 +1,6 @@
 import { createApp } from "./app.js";
 import { env } from "./config/env.js";
+import { keepAlive } from "./utils/keepAlive.js";
 import { connectDatabase } from "./db/connection.js";
 
 function safeErrorMessage(error: unknown): string {
@@ -14,6 +15,7 @@ async function main(): Promise<void> {
 
   app.listen(env.port, () => {
     console.log(`Server beží na http://localhost:${env.port}`);
+    keepAlive();
   });
 }
 
